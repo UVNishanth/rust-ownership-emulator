@@ -1,0 +1,1 @@
+Javascript simulation of Rust Ownership Model (not comprehensive)

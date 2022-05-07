@@ -1,0 +1,15 @@
+{
+  "name": "js_rust_ownership",
+  "version": "1.0.0",
+  "description": "Rust ownersip simulation using js",
+  "main": "ex1_owner_change.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UVNishanth/js_rust_ownership.git"
+  },
+  "author": "Nishanth U., Neenu A.",
+  "license": "ISC"
+}
