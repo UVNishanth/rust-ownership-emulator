@@ -1,6 +1,6 @@
 fn main(){
-    let mut x = String::from("hello");
-    let mut y = &mut x;
-    x = String::from("beep");
+    let x = String::from("hello");
+    let y = &x;
+    y = 4;
     println!("{}", y);
 }
