@@ -25,14 +25,28 @@ module.exports = class Variable{
     }
 
     set val(obj){
-        if (!(this.borrowers === undefined || this.borrowers.length === 0)){
-            throw new Error("cannot assign to "+this.name+" because it is borrowed");
+        if (typeof(obj) === typeof(this)){
+            if (!(this.borrowers === undefined || this.borrowers.length === 0)){
+                throw new Error("cannot assign to "+this.name+" because it is borrowed");
+            }
+            if(this.can_change === false){
+                throw new Error("Borrowed value cannot be changed");
+            }
+            this.value = obj.value;
+            obj.out_of_scope = true;
         }
-        if(this.can_change === false){
-            throw new Error("Borrowed value cannot be changed");
+        else{
+            if (!(this.borrowers === undefined || this.borrowers.length === 0)){
+                throw new Error("cannot assign to "+this.name+" because it is borrowed");
+            }
+            if (this.mut === false && this.borrowed_from === undefined){
+                throw new Error("cannot assign twice to immutable variable "+ this.name);
+            }
+            if(this.borrowed_from !== undefined){
+                throw new Error("Borrowed value cannot be changed");
+            }
+            this.value = obj;
         }
-        this.value = obj.value;
-        obj.out_of_scope = true;
     }
 
     borrow(obj, mut = false){
